@@ -66,9 +66,9 @@ TARGET_RECOVERY_DEVICE_DIRS += vendor/$VENDOR/$DEVICE/proprietary
 endif
 EOF
 
-cat << EOF >> "$ANDROIDMK"
-
-EOF
+echo "" >> "$PRODUCTMK"
+write_makefiles "$MY_DIR"/proprietary-files-perf.txt true
+write_makefiles "$MY_DIR"/proprietary-files-qc.txt true
 
     # Finish
     write_footers
