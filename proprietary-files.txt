@@ -1300,21 +1300,6 @@ vendor/lib64/libmlipay.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.mlipay@1.1.so
 
-# Perf
--framework/QPerformance.jar
--framework/UxPerformance.jar
-lib/libqti_performance.so
-lib/libqti-perfd-client_system.so
-lib64/libqti_performance.so
-lib64/libqti-perfd-client_system.so
-vendor/bin/energy-awareness
-vendor/bin/msm_irqbalance
-vendor/lib/libperfgluelayer.so
-
-# Perfmgr - from taimen-qpp4.190502.018
-vendor/lib/libqti-perfd-client.so|16816cfdc873a2fdc9467db52bd5f2aaa33d2b50
-vendor/lib64/libqti-perfd-client.so|93c3f90f1b72a21ca325cbb375923b1deba80467
-
 # Peripheral manager
 vendor/bin/pm-proxy
 vendor/bin/pm-service

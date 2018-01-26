@@ -63,6 +63,7 @@ setup_vendor "${DEVICE}" "${VENDOR}" "${MK_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" ${KANG} --section "${SECTION}"
 extract "${MY_DIR}/proprietary-files-twrp.txt" "${SRC}" ${KANG} --section "${SECTION}"
+extract "${MY_DIR}/proprietary-files-perf.txt" "${SRC}" ${KANG} --section "${SECTION}"
 
 TWRP_QSEECOMD="${MK_ROOT}"/vendor/"${VENDOR}"/"${DEVICE}"/proprietary/recovery/root/sbin/qseecomd
 TWRP_GATEKEEPER="${MK_ROOT}"/vendor/"${VENDOR}"/"${DEVICE}"/proprietary/recovery/root/sbin/android.hardware.gatekeeper@1.0-service
