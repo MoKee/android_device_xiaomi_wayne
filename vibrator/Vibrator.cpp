@@ -26,9 +26,11 @@
 
 #define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
 
-namespace {
-static constexpr int32_t MIN_VTG_INPUT = 120;
-static constexpr int32_t MAX_VTG_INPUT = 2750;
+namespace android {
+namespace hardware {
+namespace vibrator {
+namespace V1_2 {
+namespace implementation {
 
 static constexpr char MODE_DIRECT[] = "direct";
 static constexpr char MODE_BUFFER[] = "buffer";
@@ -145,6 +147,7 @@ Return<Status> Vibrator::on(uint32_t timeoutMs, bool isWaveform) {
    return Status::OK;
 }
 
+// Methods from ::android::hardware::vibrator::V1_2::IVibrator follow.
 Return<Status> Vibrator::on(uint32_t timeoutMs) {
     return on(timeoutMs, false /* isWaveform */);
 }
@@ -182,67 +185,65 @@ Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
     return Status::OK;
 }
 
-Return<void> Vibrator::perform(Effect effect, EffectStrength strength,
+static uint8_t convertEffectStrength(EffectStrength strength) {
+    uint8_t scale;
+
+    switch (strength) {
+    case EffectStrength::LIGHT:
+        scale = 2; // 50%
+        break;
+    case EffectStrength::MEDIUM:
+    case EffectStrength::STRONG:
+        scale = 0; // 100%
+        break;
+    }
+
+    return scale;
+}
+
+Return<void> Vibrator::perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+
+Return<void> Vibrator::perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength,
         perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+
+Return<void> Vibrator::perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
+    return performEffect(static_cast<Effect>(effect), strength, _hidl_cb);
+}
+
+Return<void> Vibrator::performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb) {
     Status status = Status::OK;
     uint32_t timeMS;
 
-    if (effect == Effect::CLICK) {
-        for (uint32_t i = 0; i < ARRAY_SIZE(WAVEFORM_CLICK_EFFECT_SEQ); i++) {
-            mBuffers[i] << std::hex << convertEffectStrength(strength,
-                    convertVoltageLevel(WAVEFORM_CLICK_EFFECT_SEQ[i])) <<
-                std::endl;
-        }
-        mBufferUpdate << 1 << std::endl;
+    switch (effect) {
+    case Effect::CLICK:
+        mSequencer << WAVEFORM_CLICK_EFFECT_SEQ << std::endl;
         timeMS = mClickDuration;
-    } else if (effect == Effect::DOUBLE_CLICK) {
-        for (uint32_t i = 0; i < ARRAY_SIZE(WAVEFORM_DOUBLE_CLICK_EFFECT_SEQ);
-                i++) {
-            mBuffers[i] << std::hex << convertEffectStrength(strength,
-                    convertVoltageLevel(WAVEFORM_DOUBLE_CLICK_EFFECT_SEQ[i])) <<
-                std::endl;
-        }
-        mBufferUpdate << 1 << std::endl;
+        break;
+    case Effect::DOUBLE_CLICK:
+        mSequencer << WAVEFORM_DOUBLE_CLICK_EFFECT_SEQ << std::endl;
         timeMS = WAVEFORM_DOUBLE_CLICK_EFFECT_MS;
-    } else {
-        _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
-        return Void();
-    }
-
-    on(timeMS, true /* isWaveform */);
-
-    _hidl_cb(status, timeMS);
-    return Void();
-}
-
-Return<void> Vibrator::perform_1_1(Effect_1_1 effect, EffectStrength strength,
-        perform_cb _hidl_cb) {
-    Status status = Status::OK;
-    uint32_t timeMS;
-
-    if (effect == Effect_1_1::TICK) {
-        for (uint32_t i = 0; i < ARRAY_SIZE(WAVEFORM_TICK_EFFECT_SEQ); i++) {
-            mBuffers[i] << std::hex << convertEffectStrength(strength,
-                    convertVoltageLevel(WAVEFORM_TICK_EFFECT_SEQ[i])) <<
-                std::endl;
-        }
-        mBufferUpdate << 1 << std::endl;
+        break;
+    case Effect::TICK:
+        mSequencer << WAVEFORM_TICK_EFFECT_SEQ << std::endl;
         timeMS = mTickDuration;
-    } else if (effect < Effect_1_1::TICK) {
-        return perform(static_cast<Effect>(effect), strength, _hidl_cb);
-    } else {
+        break;
+    default:
         _hidl_cb(Status::UNSUPPORTED_OPERATION, 0);
         return Void();
     }
-
-    on(timeMS, true /* isWaveform */);
-
+    mScale << convertEffectStrength(strength) << std::endl;
+    on(timeMS, true /* forceOpenLoop */, true /* isWaveform */);
     _hidl_cb(status, timeMS);
     return Void();
 }
+
 
 } // namespace implementation
-} // namespace V1_1
-} // namespace vibrator
-} // namespace hardware
-} // namespace android
+}  // namespace V1_2
+}  // namespace vibrator
+}  // namespace hardware
+}  // namespace android

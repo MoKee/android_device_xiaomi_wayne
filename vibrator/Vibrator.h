@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#pragma once
+#ifndef ANDROID_HARDWARE_VIBRATOR_V1_2_VIBRATOR_H
+#define ANDROID_HARDWARE_VIBRATOR_V1_2_VIBRATOR_H
 
-#include <android/hardware/vibrator/1.1/IVibrator.h>
+#include <android/hardware/vibrator/1.2/IVibrator.h>
 #include <hidl/Status.h>
 
 #include <fstream>
@@ -24,7 +25,7 @@
 namespace android {
 namespace hardware {
 namespace vibrator {
-namespace V1_1 {
+namespace V1_2 {
 namespace implementation {
 
 class Vibrator : public IVibrator {
@@ -41,14 +42,16 @@ public:
     Return<Status> setAmplitude(uint8_t amplitude) override;
 
     using EffectStrength = ::android::hardware::vibrator::V1_0::EffectStrength;
-    using Effect = ::android::hardware::vibrator::V1_0::Effect;
-    Return<void> perform(Effect effect, EffectStrength strength,
-            perform_cb _hidl_cb) override;
-    Return<void> perform_1_1(Effect_1_1 effect, EffectStrength strength,
-            perform_cb _hidl_cb) override;
+    Return<void> perform(V1_0::Effect effect, EffectStrength strength, perform_cb _hidl_cb)
+            override;
+    Return<void> perform_1_1(V1_1::Effect_1_1 effect, EffectStrength strength, perform_cb _hidl_cb)
+            override;
+    Return<void> perform_1_2(Effect effect, EffectStrength strength, perform_cb _hidl_cb) override;
 
 private:
-    Return<Status> on(uint32_t timeoutMs, bool isWaveform);
+    Return<Status> on(uint32_t timeoutMs, bool forceOpenLoop, bool isWaveform);
+    Return<void> performEffect(Effect effect, EffectStrength strength, perform_cb _hidl_cb);
+    std::ofstream mActivate;
     std::ofstream mDuration;
     std::ofstream mVtgInput;
     std::ofstream mMode;
@@ -59,7 +62,9 @@ private:
 };
 
 }  // namespace implementation
-}  // namespace V1_0
+}  // namespace V1_2
 }  // namespace vibrator
 }  // namespace hardware
 }  // namespace android
+
+#endif  // ANDROID_HARDWARE_VIBRATOR_V1_2_VIBRATOR_H

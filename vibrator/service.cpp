@@ -13,17 +13,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.vibrator@1.1-service.xiaomi_wayne"
+#define LOG_TAG "android.hardware.vibrator@1.2-service.xiaomi_wayne"
 
+#include <android/hardware/vibrator/1.2/IVibrator.h>
+#include <hidl/HidlSupport.h>
 #include <hidl/HidlTransportSupport.h>
 
 #include "Vibrator.h"
 
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
+using android::hardware::vibrator::V1_2::IVibrator;
+using android::hardware::vibrator::V1_2::implementation::Vibrator;
+using namespace android;
 
-using android::hardware::vibrator::V1_1::IVibrator;
-using android::hardware::vibrator::V1_1::implementation::Vibrator;
+// Refer to Documentation/ABI/testing/sysfs-class-led-driver-drv2624
+// kernel documentation on the detail usages for ABIs below
+static constexpr char ACTIVATE_PATH[] = "/sys/class/leds/vibrator/activate";
+static constexpr char DURATION_PATH[] = "/sys/class/leds/vibrator/duration";
+static constexpr char STATE_PATH[] = "/sys/class/leds/vibrator/state";
+static constexpr char RTP_INPUT_PATH[] = "/sys/class/leds/vibrator/device/rtp_input";
+static constexpr char MODE_PATH[] = "/sys/class/leds/vibrator/device/mode";
+static constexpr char SEQUENCER_PATH[] = "/sys/class/leds/vibrator/device/set_sequencer";
+static constexpr char SCALE_PATH[] = "/sys/class/leds/vibrator/device/scale";
+static constexpr char CTRL_LOOP_PATH[] = "/sys/class/leds/vibrator/device/ctrl_loop";
+static constexpr char LP_TRIGGER_PATH[] = "/sys/class/leds/vibrator/device/lp_trigger_effect";
+
+// File path to the calibration file
+static constexpr char CALIBRATION_FILEPATH[] = "/persist/haptics/drv2624.cal";
+
+// Kernel ABIs for updating the calibration data
+static constexpr char AUTOCAL_CONFIG[] = "autocal";
+static constexpr char LRA_PERIOD_CONFIG[] = "lra_period";
+static constexpr char AUTOCAL_FILEPATH[] = "/sys/class/leds/vibrator/device/autocal";
+static constexpr char OL_LRA_PERIOD_FILEPATH[] = "/sys/class/leds/vibrator/device/ol_lra_period";
+
+static std::string trim(const std::string& str,
+        const std::string& whitespace = " \t") {
+    const auto str_begin = str.find_first_not_of(whitespace);
+    if (str_begin == std::string::npos) {
+        return "";
+    }
 
 using android::OK;
 using android::sp;

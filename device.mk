@@ -329,7 +329,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.1-service.xiaomi_wayne
+    android.hardware.vibrator@1.2-service.xiaomi_wayne
 
 # Ramdisk
 PRODUCT_PACKAGES += \

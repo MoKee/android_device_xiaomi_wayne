@@ -14,13 +14,14 @@
 // limitations under the License.
 
 cc_binary {
-    name: "android.hardware.vibrator@1.1-service.xiaomi_wayne",
+    name: "android.hardware.vibrator@1.2-service.xiaomi_wayne",
     relative_install_path: "hw",
-    init_rc: ["android.hardware.vibrator@1.1-service.xiaomi_wayne.rc"],
+    init_rc: ["android.hardware.vibrator@1.2-service.xiaomi_wayne.rc"],
     srcs: ["service.cpp", "Vibrator.cpp"],
     shared_libs: [
         "android.hardware.vibrator@1.0",
         "android.hardware.vibrator@1.1",
+        "android.hardware.vibrator@1.2",
         "libcutils",
         "libhidlbase",
         "libhidltransport",
