@@ -19,8 +19,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common MoKee stuff
+$(call inherit-product, vendor/mk/config/common_full_phone.mk)
 
 # Inherit from wayne device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
@@ -28,7 +28,7 @@ $(call inherit-product, $(LOCAL_PATH)/device.mk)
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := wayne
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := lineage_wayne
+PRODUCT_NAME := mk_wayne
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
@@ -41,3 +41,6 @@ BUILD_FINGERPRINT := xiaomi/wayne/wayne:8.1.0/OPM1.171019.011/V9.5.11.0.ODCCNFA:
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.product.model
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mk.maintainer=IsaacChen
