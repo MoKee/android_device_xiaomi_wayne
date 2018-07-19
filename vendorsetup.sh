@@ -1,2 +1,2 @@
-add_lunch_combo lineage_wayne-userdebug
-add_lunch_combo lineage_wayne-eng
+add_lunch_combo mk_wayne-userdebug
+add_lunch_combo mk_wayne-eng
