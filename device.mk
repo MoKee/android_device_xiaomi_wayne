@@ -409,7 +409,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.xiaomi_wayne
+    android.hardware.usb@1.1-service.xiaomi_wayne
     
 # VNDK
 PRODUCT_PACKAGES += \
