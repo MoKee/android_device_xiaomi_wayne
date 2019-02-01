@@ -17,6 +17,9 @@ EXTRA_VENDOR_LIBRARIES_32 := \
     libminikin \
     libsonivox
 
+EXTRA_VENDOR_LIBRARIES := \
+    android.hidl.base@1.0
+
 define define-vndk-lib
 include $$(CLEAR_VARS)
 LOCAL_MODULE := $1.vndk-ext-gen
