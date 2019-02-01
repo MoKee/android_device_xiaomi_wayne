@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+mokee<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2007 The Android Open Source Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,4 +16,6 @@
          as not all devices can support dynamic MAC address change.  -->
     <bool name="config_wifi_support_connected_mac_randomization">true</bool>
 
+    <!-- Device specific doze package -->
+    <string name="config_customDozePackage">org.mokee.settings/org.mokee.settings.doze.DozeSettingsActivity</string>
 </resources>
