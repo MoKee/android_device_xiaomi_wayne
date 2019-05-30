@@ -126,6 +126,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
+    libbluetooth_qti \
     libbthost_if
 
 # Sensor HAL conf file
