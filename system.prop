@@ -146,10 +146,6 @@ persist.debug.coresight.config=stm-events
 ##property to choose between virtual/external wfd display
 persist.sys.wfd.virtual=0
 
-#min/max cpu in core control
-ro.vendor.qti.core_ctl_min_cpu=2
-ro.vendor.qti.core_ctl_max_cpu=4
-
 #Bringup properties
 persist.vendor.radio.atfwd.start=true
 
@@ -179,7 +175,6 @@ persist.vendor.camera.isp.clock.optmz=0
 persist.vendor.camera.linkpreview=0
 persist.vendor.camera.isp.turbo=1
 
-
 #disable awb sync in bokeh mode
 persist.vendor.camera.awb.sync=2
 
@@ -206,9 +201,6 @@ persist.vendor.camera.HAL3.enabled=1
 
 #enable video face detect func
 persist.vendor.camera.fdvideo=1
-
-#set maximum supported adapter voltage
-persist.chg.max_volt_mv=9000
 
 #add for dirac algo tsx 9/12
 persist.dirac.acs.controller=qem
@@ -247,6 +239,12 @@ sys.tianma_nt36672_offset=12
 sys.tianma_nt36672_length=46
 sys.jdi_nt36672_offset=9
 sys.jdi_nt36672_length=45
+
+#enable all system restart_level to relative
+persist.vendor.ssr.restart_level=ALL_ENABLE
+
+#thermal configs path
+sys.thermal.data.path=/data/vendor/thermal/
 
 # Maintainer
 ro.mk.maintainer=Pig
