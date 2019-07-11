@@ -51,7 +51,6 @@ vendor/lib/libarcsoft_dualcam_refocus_rear_t.so
 vendor/lib/libarcsoft_dualcam_refocus_rear_w.so
 vendor/lib/libarcsoft_dualcam_refocus.so
 vendor/lib/libarcsoft_high_dynamic_range.so
-vendor/lib/libcdsprpc.so
 vendor/lib/libdepthmapwrapper.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libhal_dbg.so
@@ -137,7 +136,6 @@ vendor/lib/libSonyIMX376C3RmscLibrary.so
 vendor/lib/libSonyIMX376KRmscLibrary.so
 vendor/lib/libbase64.so
 vendor/lib/libgui_vendor.so
-vendor/lib64/libcdsprpc.so
 vendor/lib64/libhdr_tm.so
 vendor/lib64/libmmcamera2_frame_algorithm.so
 vendor/lib64/libmmcamera2_is.so
@@ -149,17 +147,6 @@ vendor/lib64/libmmcamera_faceproc.so
 vendor/lib64/libmmcamera_faceproc2.so
 vendor/lib64/libmmcamera_tintless_algo.so
 vendor/lib64/libmmcamera_tintless_bg_pca_algo.so
-vendor/lib64/libscveBlobDescriptor.so
-vendor/lib64/libscveBlobDescriptor_stub.so
-vendor/lib64/libscveCommon.so
-vendor/lib64/libscveCommon_stub.so
-vendor/lib64/libscveFaceRecognition.so
-vendor/lib64/libscveObjectSegmentation.so
-vendor/lib64/libscveObjectSegmentation_stub.so
-vendor/lib64/libscveObjectTracker.so
-vendor/lib64/libscveObjectTracker_stub.so
-vendor/lib64/libscvePanorama.so
-vendor/lib64/libscvePanorama_lite.so
 vendor/lib64/libvideoutils.so
 
 # Camera Actuators
@@ -803,6 +790,14 @@ vendor/lib/libmmcamera_isp_sub_module.so
 # Camera HIDL
 vendor/lib64/vendor.qti.hardware.camera.device@1.0.so
 
+# CDSP
+vendor/lib64/libcdsprpc.so
+vendor/lib64/libmdsprpc.so
+vendor/lib64/libsdsprpc.so
+vendor/lib/libcdsprpc.so
+vendor/lib/libmdsprpc.so
+vendor/lib/libsdsprpc.so
+
 # Fingerprint firmware
 etc/firmware/goodixfp.b00:vendor/firmware/goodixfp.b00
 etc/firmware/goodixfp.b01:vendor/firmware/goodixfp.b01
@@ -839,6 +834,31 @@ vendor/lib64/libqfp-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0-service.so
 vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
+
+# SCVE
+vendor/etc/scve/facereco/gModel.dat
+vendor/lib64/libscveBlobDescriptor.so
+vendor/lib64/libscveObjectSegmentation.so
+vendor/lib64/libscveFaceRecognition.so
+vendor/lib64/libscveCommon.so
+vendor/lib64/libscvePanorama_lite.so
+vendor/lib64/libscveObjectSegmentation_stub.so
+vendor/lib64/libscveObjectTracker.so
+vendor/lib64/libscveBlobDescriptor_stub.so
+vendor/lib64/libscveCommon_stub.so
+vendor/lib64/libscvePanorama.so
+vendor/lib64/libscveObjectTracker_stub.so
+vendor/lib/libscveBlobDescriptor.so
+vendor/lib/libscveObjectSegmentation.so
+vendor/lib/libscveFaceRecognition.so
+vendor/lib/libscveCommon.so
+vendor/lib/libscvePanorama_lite.so
+vendor/lib/libscveObjectSegmentation_stub.so
+vendor/lib/libscveObjectTracker.so
+vendor/lib/libscveBlobDescriptor_stub.so
+vendor/lib/libscveCommon_stub.so
+vendor/lib/libscvePanorama.so
+vendor/lib/libscveObjectTracker_stub.so
 
 # Soter
 -app/SoterService/SoterService.apk
