@@ -1,22 +1,19 @@
 # ADSP
 vendor/bin/adsprpcd
 vendor/lib/libadsp_default_listener.so
+vendor/lib/libadsprpc.so
+vendor/lib/libfastcvopt.so
+vendor/lib64/libadsp_default_listener.so
+vendor/lib64/libadsprpc.so
+vendor/lib64/libfastcvopt.so
+vendor/lib64/libfastcvadsp_stub.so
+
+# ADSP modules
 vendor/lib/libadsp_hvx_callback_skel.so
 vendor/lib/libadsp_hvx_stub.so
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
-vendor/lib/libmdsprpc.so
-vendor/lib/libsdsprpc.so
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libadsprpc.so
-vendor/lib64/libfastcvadsp_stub.so
-vendor/lib64/libfastcvopt.so
-vendor/lib64/libmdsprpc.so
-vendor/lib64/libsdsprpc.so
-
-# ADSP modules
-vendor/etc/scve/facereco/gModel.dat
 vendor/lib/rfsa/adsp/capi_v2_aptX_Classic.so
 vendor/lib/rfsa/adsp/capi_v2_aptX_HD.so
 vendor/lib/rfsa/adsp/dirac_resource.dar
@@ -38,17 +35,16 @@ vendor/lib/rfsa/adsp/libvpp_svc_skel.so
 vendor/bin/hw/vendor.qti.hardware.alarm@1.0-service
 vendor/bin/power_off_alarm
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc
-vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib/libalarmservice_jni.so
-vendor/lib/vendor.qti.hardware.alarm@1.0.so
 vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so
-vendor/lib64/libalarmservice_jni.so
 vendor/lib64/vendor.qti.hardware.alarm@1.0.so
+vendor/lib/hw/vendor.qti.hardware.alarm@1.0-impl.so
+vendor/lib/vendor.qti.hardware.alarm@1.0.so
 
 # ANT+ - from LA.UM.7.2.r1-06900-sdm660.0
 -lib/libantradio.so|b6b7b93dfa155de37d755542a0d66cc9f77e256c
 lib64/com.qualcomm.qti.ant@1.0.so|33d353a1077c70c3d7c013938b092e93a18d5b58
 -lib64/libantradio.so|def8c83cab05b53fe70754f23cf475240a8358fd
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|514226960669db32e44a9457e6de7c07ac70ec1b
 vendor/lib64/com.qualcomm.qti.ant@1.0.so|5779ba85ae23ede7552a768afb8042d72f71afe2
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so|94729946e6ba94dd5d24c0495661efadc7ab782e
 
@@ -57,10 +53,6 @@ lib64/libaptX_encoder.so|22f5749edb5099526788c22708099a7791dd837f
 lib64/libaptXHD_encoder.so|c4ad4d6d7615f7df3ea1a4be5c6dae8a8c8ee8b1
 
 # Audio
-vendor/firmware/dbmd4_va_fw.bin
-vendor/firmware/tas2557_uCDSP.bin
-vendor/firmware/tfa98xx.cnt
-vendor/firmware/voice_amodel.bin
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbrtac.so
@@ -72,10 +64,6 @@ vendor/lib/libaudioparsers.so
 vendor/lib/libdrc.so
 vendor/lib/libqtigef.so
 vendor/lib/libsurround_3mic_proc.so
-vendor/lib/soundfx/libasphere.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
 vendor/lib64/libacdb-fts.so
 vendor/lib64/libacdbloader.so
 vendor/lib64/libacdbrtac.so
@@ -84,9 +72,27 @@ vendor/lib64/libaudcal.so
 vendor/lib64/libaudioalsa.so
 vendor/lib64/libaudioparsers.so
 vendor/lib64/libqtigef.so
-vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libqcbassboost.so
-vendor/lib64/soundfx/libqcvirt.so
+
+# Audio firmware
+vendor/firmware/dbmd4_va_fw.bin
+vendor/firmware/tas2557_uCDSP.bin
+vendor/firmware/tfa98xx.cnt
+vendor/firmware/voice_amodel.bin
+
+# Audio FX modules - from perseus-user 9 PKQ1.180729.001 V10.3.1.0.PEECNXM release-keys
+etc/permissions/audiosphere.xml|3c6d8f14bd99e52a424282fd5d0a5b9b06485dea
+framework/audiosphere.jar|727fac8181bd3a7f8a18e14692747628a8a0c752
+vendor/lib/soundfx/libasphere.so|0783283ac9f68d5ebbeef350adc9b66b3248449b
+vendor/lib/soundfx/libdirac.so|cc5f8c9521c49af00800715299179f2ed90811ce
+vendor/lib/soundfx/libmisoundfx.so|569ee2df586e95116b79cfb3d89429f2032a7a76
+vendor/lib/soundfx/libqcbassboost.so|1722ba76b9e6922fca17ce9f538d71b3ae37d78e
+vendor/lib/soundfx/libqcreverb.so|fa8a59cc8dc376ba8903104ac36707e576280c24
+vendor/lib/soundfx/libqcvirt.so|c373619e800e379d3bc88bee9dacf80a87a4e0ca
+vendor/lib64/soundfx/libasphere.so|718aa55bf9a32cb77a6f5e8f33e776d30e2dadc9
+vendor/lib64/soundfx/libdirac.so|4fcb33c0584439e6f9d130cc4c6affd943bbcb73
+vendor/lib64/soundfx/libqcbassboost.so|1f9b4eca3f6b1fea872d90b943d2c434e25e0fa4
+vendor/lib64/soundfx/libqcreverb.so|d8ce60a46a0d20e21d3246742e08328606ddf960
+vendor/lib64/soundfx/libqcvirt.so|88349315d99cea68a3b766fa4c6e1181d26f561b
 
 # Bluetooth
 vendor/bin/hci_qcomm_init
@@ -97,9 +103,6 @@ vendor/lib/libbtnv.so
 vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbt-hidlclient.so
 vendor/lib64/libbtnv.so
-
-# Bluetooth - from LA.UM.7.2.r1-06900-sdm660.0
-vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti|514226960669db32e44a9457e6de7c07ac70ec1b
 
 # Charger
 vendor/bin/hvdcp_opti
@@ -171,11 +174,9 @@ vendor/lib64/vendor.qti.data.factory@1.0.so
 vendor/lib64/vendor.qti.latency@2.0.so
 
 # Consumerir
-vendor/lib/hw/consumerir.default.so
 vendor/lib64/hw/consumerir.default.so
 
 # Dirac - from Xiaomi
-vendor/lib/soundfx/libdirac.so|f63826a905b520fa524e4c1b147be7cf65240953
 vendor/lib/libDiracAPI_SHARED.so|42b49679d38eca93fead05ea06ddbdc8108fd4b1
 vendor/etc/diracmobile.config|d781cd6798a7481a8f7128d144abfb2b8794212d
 
@@ -230,26 +231,26 @@ vendor/lib64/libwvhidl.so
 vendor/lib64/mediadrm/libwvdrmengine.so
 
 # ESE-Powermanager
-vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
-vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 lib/vendor.qti.esepowermanager@1.0.so
 lib64/vendor.qti.esepowermanager@1.0.so
+vendor/bin/hw/vendor.qti.esepowermanager@1.0-service
+vendor/etc/init/vendor.qti.esepowermanager@1.0-service.rc
 vendor/lib/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/hw/vendor.qti.esepowermanager@1.0-impl.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 
 # Hotword enrollment
--priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk;PRESIGNED
--priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk;PRESIGNED
+-priv-app/HotwordEnrollmentOKGoogleWCD9340/HotwordEnrollmentOKGoogleWCD9340.apk;PRESIGNED|f6308f0c3efdb0ea1e733c85ce86130b1312c4ff
+-priv-app/HotwordEnrollmentXGoogleWCD9340/HotwordEnrollmentXGoogleWCD9340.apk;PRESIGNED|65b48cdbec4ebba1a4636197793d51755861807c
 
 # Gatekeeper
-vendor/lib/hw/gatekeeper.sdm660.so
-vendor/lib64/hw/gatekeeper.sdm660.so
 vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
-vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
-vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
 vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc
+vendor/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+vendor/lib/hw/gatekeeper.sdm660.so
+vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so
+vendor/lib64/hw/gatekeeper.sdm660.so
 
 # GPS
 vendor/bin/hw/vendor.qti.gnss@2.0-service
@@ -292,7 +293,7 @@ vendor/lib64/vendor.qti.gnss@1.1.so
 vendor/lib64/vendor.qti.gnss@1.2.so
 vendor/lib64/vendor.qti.gnss@2.0.so
 
-# GPU firmware
+# Graphics (Adreno firmware)
 vendor/firmware/a512_zap.b00
 vendor/firmware/a512_zap.b01
 vendor/firmware/a512_zap.b02
@@ -346,6 +347,10 @@ vendor/lib/libRSDriver_adreno.so|89c530c36b51a9f7c830f8f0b83b4b9a275ec6f5
 vendor/lib/libhdr_tm.so
 vendor/lib64/libhdr_tm.so
 
+# Graphics (Vulkan)
+vendor/lib/hw/vulkan.sdm660.so
+vendor/lib64/hw/vulkan.sdm660.so
+
 # Graphics (SDM) - from LA.UM.7.2.r1-06900-sdm660.0
 vendor/lib/libqseed3.so|c60e08f5efa1e9aea339a7a5a6dccdc2d107f530
 vendor/lib/libsdm-color.so|8e083bb2a20ecf76bf96e303134cbaa9ce46be81
@@ -359,23 +364,16 @@ vendor/lib64/libsdm-disp-vndapis.so|d93f262f60b58f32273909142aa7fdc7bfb6dda3
 vendor/lib64/libsdmextension.so|d431d8feaa8b45a80f031d50e424418e53aed5d2
 vendor/lib64/libtinyxml2_1.so|a2d9661cf2bb426e72ba15fd1a6a4eec940418a5
 
-# Graphics (Vulkan)
-vendor/lib/hw/vulkan.sdm660.so
-vendor/lib64/hw/vulkan.sdm660.so
-
 # Keymaster
 vendor/lib/libkeymasterutils.so
 vendor/lib/libkeymasterprovision.so
 vendor/lib/libkeymasterdeviceutils.so
-vendor/lib/libqtikeymaster4.so
 vendor/lib64/libkeymasterutils.so
 vendor/lib64/libkeymasterprovision.so
 vendor/lib64/libkeymasterdeviceutils.so
-vendor/lib64/libqtikeymaster4.so
 
 # Keystore
 vendor/bin/hw/android.hardware.keymaster@3.0-service-qti
-vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
 vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc
 vendor/lib/hw/keystore.sdm660.so
 vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so
@@ -503,7 +501,7 @@ vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
-# QMI - from MI 8 Lite platina-user 9 PKQ1.181007.001 9.3.28 release-keys
+# QMI
 etc/permissions/qti_permissions.xml
 etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
 vendor/bin/irsc_util
@@ -536,6 +534,18 @@ vendor/lib64/libqmi_csi.so
 vendor/lib64/libqmi_encdec.so
 vendor/lib64/libqmi.so
 vendor/lib64/libqmiservices.so
+
+
+# QTI factory
+vendor/bin/hw/vendor.qti.hardware.factory@1.0-service
+vendor/etc/init/vendor.qti.hardware.factory@1.0-service.rc
+vendor/etc/permissions/vendor.qti.hardware.factory.xml
+vendor/lib64/hw/vendor.qti.hardware.factory@1.0-impl.so
+vendor/lib64/vendor.qti.data.factory@1.0.so
+vendor/lib64/vendor.qti.hardware.factory@1.0.so
+vendor/lib/hw/vendor.qti.hardware.factory@1.0-impl.so
+vendor/lib/vendor.qti.data.factory@1.0.so
+vendor/lib/vendor.qti.hardware.factory@1.0.so
 
 # Radio
 -app/datastatusnotification/datastatusnotification.apk
@@ -660,6 +670,15 @@ vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensor1.so
 vendor/lib64/sensors.ssc.so
 
+# SSR
+vendor/bin/ssr_diag
+vendor/bin/ssr_setup
+vendor/bin/subsystem_ramdump
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libsubsystem_control.so
+vendor/lib64/libSubSystemShutdown.so
+vendor/lib64/libsubsystem_control.so
+
 # Time services
 -vendor/app/TimeService/TimeService.apk
 vendor/bin/time_daemon
@@ -667,12 +686,10 @@ vendor/lib/libtime_genoff.so
 vendor/lib64/libtime_genoff.so
 
 # TUI
-lib/vendor.qti.hardware.tui_comm@1.0.so
-lib64/vendor.qti.hardware.tui_comm@1.0.so
 vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc
-vendor/lib/vendor.qti.hardware.tui_comm@1.0.so
 vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
+vendor/lib/vendor.qti.hardware.tui_comm@1.0.so
 
 # Wifi
 vendor/bin/cnss-daemon
