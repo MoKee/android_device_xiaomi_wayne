@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_wayne.mk
+    $(LOCAL_DIR)/mokee_wayne.mk
 
 COMMON_LUNCH_CHOICES := \
-    mk_wayne-user \
-    mk_wayne-userdebug \
-    mk_wayne-eng
+    mokee_wayne-user \
+    mokee_wayne-userdebug \
+    mokee_wayne-eng
