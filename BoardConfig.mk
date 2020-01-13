@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,8 +26,6 @@
 -include device/xiaomi/wayne-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/xiaomi/wayne
-
-TARGET_LIBINIT_EXTERNAL_DEFINES_FILE := $(DEVICE_PATH)/init/init_wayne.cpp
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2018-11-01

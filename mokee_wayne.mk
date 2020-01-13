@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := wayne
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_NAME := mokee_wayne
+PRODUCT_MODEL := MI 6X
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
@@ -38,6 +39,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="wayne-user 8.1.0 OPM1.171019.011 V10.0.3.0.ODCCNFH release-keys"
 
 BUILD_FINGERPRINT := xiaomi/wayne/wayne:8.1.0/OPM1.171019.011/V10.0.3.0.ODCCNFH:user/release-keys
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.product.model
